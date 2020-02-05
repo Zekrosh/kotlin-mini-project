@@ -1,0 +1,54 @@
+
+
+fun main() {
+    println("""
+        ======================================================================
+        #   Welcome To Guess The Number with Kotlin!!                        #
+        #   Nanti komputer akan secara acak memberikan jawaban yang benar    #
+        #   Silahkan tebak sampai benar                                      #
+        #   Batas untuk menebak hanya sampai 7 kali                          #
+        ======================================================================
+        """.trimIndent())
+    println("Ayo mulai!!")  
+    startGame()
+}
+fun startGame(){
+    val random = (1..100).shuffled().first()
+    var jumlah = 0
+    val maks_coba = 7
+
+
+    do {
+        print("Masukkan angka antara 1-100: ")
+        val tebak = readLine()!!.toInt()
+        jumlah++
+
+        if (tebak < random){
+            println("Angka terlalu kecil")
+            println("Percobaan ke " + jumlah)
+        } else if (tebak > random) {
+            println("Angka terlalu besar")
+            println("Percobaan ke " + jumlah)
+        } else {
+            println("Selamat anda berhasil dalam"  + jumlah + " percobaan")
+        }
+
+        if (jumlah == maks_coba){
+            println("Kesempatan anda telah habis!")
+        }
+        
+
+    } while (tebak != random)
+    restart()
+}
+
+fun restart() {
+    println("Mau ulang??") 
+    print("(y/n): ")
+    val jawab = readLine()
+    if(jawab == "y" ){
+        startGame()
+    } else {
+        println("Silahkan tingkatkan IQ mu!!")
+    }
+}
