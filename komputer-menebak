@@ -1,0 +1,40 @@
+fun main() {
+    println("Komputer akan menebak angka yang diberikan user. Jawablah dengan jujur!")
+    smartCom()
+
+}
+fun restart() {
+    println("Mau ulang??")
+    print("(y/n): ")
+    val ulang = readLine()
+    if (ulang == "y") {
+        smartCom()
+    } else {
+        println("terimakasih!")
+    }
+}
+
+fun smartCom() {
+	var atas = 100
+	var bawah = 1
+	var tebakan = 0
+
+	do {
+		val tebakanSementara = bawah + ((bawah - atas) / 2)
+		tebakan++
+        
+        println("Angkanya adalah $tebakanSementara")
+        println("'b' jika kebesaran 'k jika kekecilan' 'y' jika benar")
+        val petunjuk = readLine()
+        
+       	when {
+            petunjuk == "y" -> println("Berhasil ditebak dalam $tebakan kali")
+            petunjuk == "b" -> bawah = tebakanSementara + 1
+            petunjuk == "k" -> atas = tebakanSementara - 1
+        }
+        
+
+		
+	} while (petunjuk != "y")
+    restart()
+}
